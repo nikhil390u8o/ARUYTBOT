@@ -51,13 +51,6 @@ def join_keyboard():
         InlineKeyboardButton("✅ ɪ ᴊᴏɪɴᴇᴅ", callback_data="check_join")
     ]])
 
-from telegram import (
-    InlineKeyboardMarkup,
-    InlineKeyboardButton,
-    WebAppInfo,
-    CopyTextButton
-)
-
 def main_keyboard():
     return InlineKeyboardMarkup([
         [
@@ -69,20 +62,11 @@ def main_keyboard():
             InlineKeyboardButton("🏓 ᴘɪɴɢ ᴀᴘɪ", callback_data="ping"),
         ],
         [
-            InlineKeyboardButton(
-                "ᴀᴘɪ ʙᴀsᴇ ᴜʀʟ",
-                copy_text=CopyTextButton(text=f"{API_BASE}")
-            ),
-            InlineKeyboardButton(
-                "📢 ᴄʜᴀɴɴᴇʟ",
-                url=f"https://t.me/{CHANNEL_ID.lstrip('@')}"
-            ),
+            InlineKeyboardButton("🌐 ᴡᴇʙ ᴘᴀɴᴇʟ", url=f"{API_BASE}/web"),
+            InlineKeyboardButton("📢 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{CHANNEL_ID.lstrip('@')}"),
         ],
         [
-            InlineKeyboardButton(
-                "🌍 ᴡᴇʙ ʙᴜᴛᴛᴏɴ",
-                web_app=WebAppInfo(url=f"{API_BASE}/web")
-            )
+            InlineKeyboardButton("🌍 ᴡᴇʙ ʙᴜᴛᴛᴏɴ", web_app=WebAppInfo(url=f"{API_BASE}/web"))
         ]
     ])
 
