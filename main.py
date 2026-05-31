@@ -81,7 +81,7 @@ async def start(client: Client, message: Message):
         await message.reply_photo(
             photo=IMG_START,
             caption=(
-                f"**⚡ ᴡᴇʟᴄᴏᴍᴇ, {user.first_name}!**\n\n"
+                f"**⚡ ᴡᴇʟᴄᴏᴍᴇ, {message.from_user.mention}!**\n\n"
                 f"╔══════════════════╗\n"
                 f"║  ᴀʀᴜ ʏᴛ ᴀᴘɪ ʙᴏᴛ  ║\n"
                 f"╚══════════════════╝\n\n"
