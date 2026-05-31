@@ -16,10 +16,10 @@ MASTER_KEY = os.environ.get("MASTER_KEY", "YukiMasterAdmin2026")
 API_BASE   = os.environ.get("API_BASE", "https://web-production-6415.up.railway.app")
 
 # ── ɪᴍᴀɢᴇs ───────────────────────────────────────────────────────
-IMG_START  = os.environ.get("IMG_START",  "https://files.catbox.moe/l1de8g.jpg")
-IMG_KEY    = os.environ.get("IMG_KEY",    "https://files.catbox.moe/l1de8g.jpg")
-IMG_USAGE  = os.environ.get("IMG_USAGE",  "https://files.catbox.moe/l1de8g.jpg")
-IMG_PING   = os.environ.get("IMG_PING",   "https://files.catbox.moe/l1de8g.jpg")
+IMG_START  = os.environ.get("IMG_START",  "https://files.catbox.moe/bd3cqo.jpg")
+IMG_KEY    = os.environ.get("IMG_KEY",    "https://files.catbox.moe/bd3cqo.jpg")
+IMG_USAGE  = os.environ.get("IMG_USAGE",  "https://files.catbox.moe/bd3cqo.jpg")
+IMG_PING   = os.environ.get("IMG_PING",   "https://files.catbox.moe/bd3cqo.jpg")
 
 bot = Client("ARUAPIBot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
