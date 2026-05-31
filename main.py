@@ -62,11 +62,13 @@ def main_keyboard():
             InlineKeyboardButton("🏓 ᴘɪɴɢ ᴀᴘɪ", callback_data="ping"),
         ],
         [
-            InlineKeyboardButton("🌐 ᴡᴇʙ ᴘᴀɴᴇʟ", url=f"{API_BASE}/web"),
+            InlineKeyboardButton("ᴀᴘɪ ʙᴀsᴇ ᴜʀʟ", url=f"{API_BASE}"),
             InlineKeyboardButton("📢 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{CHANNEL_ID.lstrip('@')}"),
+        ],
+        [
+            InlineKeyboardButton("🌍 ᴡᴇʙ ʙᴜᴛᴛᴏɴ", web_app=WebAppInfo(url=f"{API_BASE}/web"))
         ]
     ])
-
 
 # ── /sᴛᴀʀᴛ ───────────────────────────────────────────────────────
 
