@@ -6,7 +6,13 @@ from pyrogram.types import (
     Message, InlineKeyboardMarkup,
     InlineKeyboardButton, CallbackQuery, WebAppInfo
 )
+import json, os
 
+# Config mein add karo
+LOG_GROUP = os.environ.get("LOG_GROUP", "-1001234567890")  # apna group id daalo
+
+# Users track karne ke liye
+USERS_FILE = "users.json"
 # ── ᴄᴏɴꜰɪɢ ───────────────────────────────────────────────────────
 API_ID     = int(os.environ.get("API_ID", "20898349"))
 API_HASH   = os.environ.get("API_HASH", "9fdb830d1e435b785f536247f49e7d87")
@@ -23,7 +29,37 @@ IMG_PING   = os.environ.get("IMG_PING",   "https://files.catbox.moe/bd3cqo.jpg")
 
 bot = Client("ARUAPIBot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
+#TOTAL USER IN BOT CHEK
+def load_users():
+    if os.path.exists(USERS_FILE):
+        with open(USERS_FILE, "r") as f:
+            return set(json.load(f))
+    return set()
 
+def save_users(users):
+    with open(USERS_FILE, "w") as f:
+        json.dump(list(users), f)
+
+known_users = load_users()
+
+
+# start handler ke andar, joined check ke baad, sabse upar add karo:
+async def log_new_user(client, user):
+    global known_users
+    if user.id not in known_users:
+        known_users.add(user.id)
+        save_users(known_users)
+        username = f"@{user.username}" if user.username else "ɴ/ᴀ"
+        text_link = f"[{user.first_name}](tg://user?id={user.id})"
+        await client.send_message(
+            LOG_GROUP,
+            f"**ɴᴇᴡ ᴜsᴇʀ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ** 🚀\n\n"
+            f"**ɴᴀᴍᴇ :** {text_link}\n"
+            f"**ᴜ_ɪᴅ :** `{user.id}`\n"
+            f"**ᴜ_ɴᴀᴍᴇ :** {username}\n"
+            f"**ᴛᴏᴛᴀʟ ᴜsᴇʀs :** `{len(known_users)}`",
+            disable_web_page_preview=True
+        )
 # ── ʜᴇʟᴘᴇʀs ──────────────────────────────────────────────────────
 
 async def check_joined(client, user_id: int) -> bool:
@@ -75,6 +111,7 @@ def main_keyboard():
 @bot.on_message(filters.command("start") & filters.private)
 async def start(client: Client, message: Message):
     user = message.from_user
+    await log_new_user(client, user)
     joined = await check_joined(client, user.id)
 
     if not joined:
@@ -122,6 +159,23 @@ async def start(client: Client, message: Message):
         reply_markup=main_keyboard()
     )
 
+# STATS COMMAND
+# Stats command
+@bot.on_message(filters.command("stats") & filters.private)
+async def stats_cmd(client: Client, message: Message):
+    total = len(known_users)
+    await message.reply_photo(
+        photo=IMG_START,
+        caption=(
+            f"**📊 ʙᴏᴛ sᴛᴀᴛs**\n\n"
+            f"╔══════════════════╗\n"
+            f"║   ʀᴇᴀʟ ᴛɪᴍᴇ     ║\n"
+            f"╚══════════════════╝\n\n"
+            f"👥 **ᴛᴏᴛᴀʟ ᴜsᴇʀs :** `{total}`\n"
+            f"✅ **ʙᴏᴛ sᴛᴀᴛᴜs :** ᴀᴄᴛɪᴠᴇ\n\n"
+            f"**ᴅᴇᴠ:** ᴘᴀɴᴅᴀ-ʙᴀʙʏ | **sᴜᴘᴘᴏʀᴛ:** @sxypndu"
+        )
+    )
 
 # ── ᴄʜᴇᴄᴋ ᴊᴏɪɴ ────────────────────────────────────────────────
 
