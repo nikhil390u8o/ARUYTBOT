@@ -9,7 +9,7 @@ from pyrogram.types import (
 import json, os
 
 # Config mein add karo
-LOG_GROUP = os.environ.get("LOG_GROUP", "-1001234567890")  # apna group id daalo
+LOG_GROUP = os.environ.get("LOG_GROUP", "-1003468477782")  # apna group id daalo
 
 # Users track karne ke liye
 USERS_FILE = "users.json"
