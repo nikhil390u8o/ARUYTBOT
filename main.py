@@ -243,7 +243,7 @@ async def my_key_cb(client: Client, cb: CallbackQuery):
                 f"📛 **ʟᴀʙᴇʟ:** `{label}`\n"
                 f"🕐 **ᴄʀᴇᴀᴛᴇᴅ:** `{created}`\n\n"
                 f"⚡ ᴜsᴇ ᴛʜɪs ᴀs `YOUTUBE_API_KEY` ɪɴ ʏᴏᴜʀ ʙᴏᴛ\n"
-                f"🌐 ᴄʜᴇᴄᴋ ᴜsᴀɢᴇ ᴀᴛ: `{API_BASE}`"
+                f"🌐 ᴀᴘɪ ʙᴀsᴇ ᴜʀʟ: `{API_BASE}`"
             ),
             reply_markup=InlineKeyboardMarkup([[
                 InlineKeyboardButton("🏠 ᴍᴇɴᴜ", callback_data="main_menu"),
